@@ -44,3 +44,17 @@ def compute_correlations(file_name):
     for event in events:
         correlations[event] = compute_phi(file_name, event)
     return correlations
+
+def diagnose(file_name):
+    correlations = compute_correlations(file_name)
+    max_corr = max(correlations, key=correlations.get)
+    min_corr = min(correlations, key=correlations.get)
+    return max_corr, min_corr
+
+def main():
+    journal_file = "journal.json"
+    max_corr, min_corr = diagnose(journal_file)
+    print(f"To prevent transforming into a squirrel, Scott should consider avoiding {max_corr} and focusing on {min_corr}.")
+
+if __name__=='__main__':
+    main()
